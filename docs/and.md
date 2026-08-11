@@ -8,13 +8,16 @@ logic.and()
 - **b**: the second boolean condition
 
 ## Example
-let num: number = 0
-let num2: number = 1
+
 
 ```blocks
-if (logic.and(num == 0, num2 == 1) {
- game.splash("true")
-}
+
+let num = 5
+let num2 = 1
+
+if (logic.and(num == 5, num2 == 1) {
+    game.splash("true")
+} 
 ```
 
 ```package
