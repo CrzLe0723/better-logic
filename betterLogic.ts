@@ -24,15 +24,19 @@ namespace logic {
      */
     //% block="XOR $a $b"
     //% group="Core Logic"
+    //% weight=85
     export function xor(a: boolean, b: boolean): boolean {
         return a != b
     }
     /**
      * AND gate
      * Runs code if both specified conditions is true
+     * @a first boolean condition
+     * @b second boolean condition
      */
     //% block="$a AND $b"
     //% group="Core Logic"
+    //% weight=100
     export function and(a: boolean, b: boolean): boolean {
         return a && b
     }
@@ -43,6 +47,7 @@ namespace logic {
      */
     //% block="$a OR $b"
     //% group="Core Logic"
+    //% weight=95
     export function or(a: boolean, b: boolean): boolean {
         return a || b
     }
@@ -53,6 +58,7 @@ namespace logic {
      */
     //% block="NOT $a"
     //% group="Core Logic"
+    //% weight=90
     export function not(a: boolean): boolean {
         return !a
     }
