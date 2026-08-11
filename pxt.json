@@ -9,7 +9,8 @@
         "main.ts",
         "README.md",
         "assets.json",
-        "betterLogic.ts"
+        "betterLogic.ts",
+        "docs/and.md"
     ],
     "testFiles": [
         "test.ts"
