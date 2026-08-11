@@ -21,5 +21,5 @@ if (logic.and(num == 5, num2 == 1) {
 ```
 
 ```package
-better-logic=github:CrzLe0723/Better-Logic
+Better-Logic=github:CrzLe0723/better-logic
 ```
