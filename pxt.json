@@ -1,6 +1,6 @@
 {
     "name": "Better-Logic",
-    "description": "",
+    "description": "A MakeCode Arcade extension that adds advanced logic, comparison, and utility blocks for easier game development.",
     "dependencies": {
         "device": "*"
     },
