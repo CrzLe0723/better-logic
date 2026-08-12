@@ -37,7 +37,7 @@ namespace logic {
     //% block="$a AND $b"
     //% group="Core Logic"
     //% weight=100
-    //% help=github:better-logic/docs/and
+    //% help=github:Better-Logic/docs/and
     export function and(a: boolean, b: boolean): boolean {
         return a && b
     }
