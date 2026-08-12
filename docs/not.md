@@ -14,7 +14,7 @@ logic.not()
 let num = 2
 let num2 = 1
 
-if (logic.or(num == 5, num2 == 1) {
+if (logic.not(num == 5) {
     game.splash("true")
 }
 
