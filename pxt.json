@@ -11,7 +11,8 @@
         "assets.json",
         "betterLogic.ts",
         "docs/and.md",
-        "docs/or.md"
+        "docs/or.md",
+        "docs/not.md"
     ],
     "testFiles": [
         "test.ts"
