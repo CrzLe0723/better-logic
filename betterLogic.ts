@@ -21,6 +21,8 @@ namespace logic {
     /**
      * XOR gate
      * True when inputs are different.
+     * @param a first boolean condition
+     * @param b second boolean condition
      */
     //% block="XOR $a $b"
     //% group="Core Logic"
@@ -31,8 +33,8 @@ namespace logic {
     /**
      * AND gate
      * Runs code if both specified conditions is true
-     * @a first boolean condition
-     * @b second boolean condition
+     * @param a first boolean condition
+     * @param b second boolean condition
      */
     //% block="$a AND $b"
     //% group="Core Logic"
@@ -45,6 +47,8 @@ namespace logic {
     /**
      * OR gate
      * Runs code if either of two specified conditions is true
+     * @param first boolean condition
+     * @param second boolean condition
      */
     //% block="$a OR $b"
     //% group="Core Logic"
@@ -56,6 +60,8 @@ namespace logic {
     /**
      * NOT gate
      * Inverts a boolean value true -> false | false -> true
+     * @param a boolean condition
+     * 
      */
     //% block="NOT $a"
     //% group="Core Logic"
