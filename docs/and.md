@@ -17,7 +17,8 @@ let num2 = 1
 
 if (logic.and(num == 5, num2 == 1) {
     game.splash("true")
-} 
+}
+
 ```
 
 ```package
