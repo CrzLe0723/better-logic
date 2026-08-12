@@ -10,7 +10,8 @@
         "README.md",
         "assets.json",
         "betterLogic.ts",
-        "docs/and.md"
+        "docs/and.md",
+        "or.md"
     ],
     "testFiles": [
         "test.ts"
