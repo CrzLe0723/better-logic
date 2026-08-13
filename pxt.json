@@ -8,6 +8,7 @@
         "main.blocks",
         "main.ts",
         "README.md",
+        "LICENSE",
         "assets.json",
         "betterLogic.ts",
         "docs/and.md",
