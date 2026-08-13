@@ -831,7 +831,7 @@ namespace logic {
      */
     //% blockId=betterlogictoBoolean
     //% block="Boolean(%value)"
-    //% group="Conversions & Numbers"
+    //% group="Conversions"
     export function toBoolean(value: any): boolean {
         return !!value
     }
