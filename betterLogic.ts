@@ -53,6 +53,7 @@ namespace logic {
     //% block="$a OR $b"
     //% group="Core Logic"
     //% weight=95
+    //% help=github:Better-Logic/docs/or
     export function or(a: boolean, b: boolean): boolean {
         return a || b
     }
