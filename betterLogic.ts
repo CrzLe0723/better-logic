@@ -824,4 +824,15 @@ namespace logic {
         }
         return true
     }
+
+    /**
+     * Converts a value to a boolean.
+     * @param value The value to convert.
+     */
+    //% blockId=betterlogictoBoolean
+    //% block="Boolean(%value)"
+    //% group="Conversions & Numbers"
+    export function toBoolean(value: any): boolean {
+        return !!value
+    }
 }
