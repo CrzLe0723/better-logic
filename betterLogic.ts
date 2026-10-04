@@ -255,95 +255,199 @@ namespace logic {
     }
 
 
-    // ---MULTI INPUT LOGIC---
-
-
-    /**
-     * ONE TRUE gate
-     * True when exactly one input is true.
-     */
-    //% block="ONE TRUE $a $b"
-    //% group="Multi Logic"
-    export function oneTrue(a: boolean, b: boolean): boolean {
-        return (a && !b) || (!a && b)
-    }
+    // ---ARRAY LOGIC---
 
     /**
-     * BOTH FALSE gate
-     * True when both inputs are false.
+     * ALL
+     * True only when every value in the array is true.
+     * An empty array returns true.
      */
-    //% block="BOTH FALSE $a $b"
-    //% group="Multi Logic"
-    export function bothFalse(a: boolean, b: boolean): boolean {
-        return !a && !b
+    //% block="ALL $values"
+    //% group="Array Logic"
+    export function all(values: boolean[]): boolean {
+        for (let v of values) {
+            if (!v) return false
+        }
+        return true
     }
 
     /**
-     * ANY THREE gate
-     * True when at least one input is true.
+     * ANY
+     * True when at least one value in the array is true.
      */
-    //% block="ANY $a $b $c"
-    //% group="Multi Logic"
-    export function any3(a: boolean, b: boolean, c: boolean): boolean {
-        return a || b || c
+    //% block="ANY $values"
+    //% group="Array Logic"
+    export function any(values: boolean[]): boolean {
+        for (let v of values) {
+            if (v) return true
+        }
+        return false
     }
 
     /**
-     * ALL THREE gate
-     * True only when all inputs are true.
+     * NONE
+     * True only when every value in the array is false.
      */
-    //% block="ALL $a $b $c"
-    //% group="Multi Logic"
-    export function all3(a: boolean, b: boolean, c: boolean): boolean {
-        return a && b && c
+    //% block="NONE $values"
+    //% group="Array Logic"
+    export function none(values: boolean[]): boolean {
+        for (let v of values) {
+            if (v) return false
+        }
+        return true
     }
 
     /**
-     * MAJORITY gate
-     * True when at least two inputs are true.
+     * ALL FALSE
+     * True only when every value in the array is false.
      */
-    //% block="MAJORITY $a $b $c"
-    //% group="Multi Logic"
-    export function majority(a: boolean, b: boolean, c: boolean): boolean {
-        return (a && b) || (a && c) || (b && c)
+    //% block="ALL FALSE $values"
+    //% group="Array Logic"
+    export function allFalse(values: boolean[]): boolean {
+        return none(values)
     }
 
     /**
-     * NONE TRUE gate
-     * True only when all inputs are false.
+     * AT LEAST N TRUE
+     * True when at least n values are true.
      */
-    //% block="NONE TRUE $a $b"
-    //% group="Multi Logic"
-    export function noneTrue(a: boolean, b: boolean): boolean {
-        return !a && !b
+    //% block="AT LEAST $n TRUE in $values"
+    //% group="Array Logic"
+    export function atLeast(values: boolean[], n: number): boolean {
+        if (n <= 0) return true
+
+        let count = 0
+        for (let v of values) {
+            if (v) {
+                count++
+                if (count >= n) return true
+            }
+        }
+        return false
     }
+
     /**
-     * EXACTLY TWO TRUE
-     * True only when exactly two inputs are true.
+     * EXACTLY N TRUE
+     * True when exactly n values are true.
      */
-    //% block="EXACTLY TWO $a $b $c"
-    //% group="Multi Logic"
-    export function exactlyTwo(a: boolean, b: boolean, c: boolean): boolean {
-        return (a && b && !c) || (a && !b && c) || (!a && b && c)
+    //% block="EXACTLY $n TRUE in $values"
+    //% group="Array Logic"
+    export function exactly(values: boolean[], n: number): boolean {
+        if (n < 0) return false
+
+        let count = 0
+        for (let v of values) {
+            if (v) {
+                count++
+                if (count > n) return false
+            }
+        }
+        return count === n
     }
+
     /**
-     * AT MOST ONE TRUE
-     * True when zero or one inputs are true.
+     * AT MOST N TRUE
+     * True when no more than n values are true.
      */
-    //% block="AT MOST ONE $a $b $c"
-    //% group="Multi Logic"
-    export function atMostOne(a: boolean, b: boolean, c: boolean): boolean {
-        return !(a && b) && !(a && c) && !(b && c)
+    //% block="AT MOST $n TRUE in $values"
+    //% group="Array Logic"
+    export function atMost(values: boolean[], n: number): boolean {
+        if (n < 0) return false
+
+        let count = 0
+        for (let v of values) {
+            if (v) {
+                count++
+                if (count > n) return false
+            }
+        }
+        return true
     }
+
     /**
-     * ANY FALSE
-     * True if at least one input is false.
+     * MAJORITY
+     * True when more than half of the values are true.
      */
-    //% block="ANY FALSE $a $b"
-    //% group="Multi Logic"
-    export function anyFalse(a: boolean, b: boolean): boolean {
-        return !a || !b
+    //% block="MAJORITY of $values"
+    //% group="Array Logic"
+    export function majority(values: boolean[]): boolean {
+        return countTrue(values) > values.length / 2
     }
+
+    /**
+     * COUNT TRUE
+     * Returns the number of true values in an array.
+     */
+    //% block="COUNT TRUE in $values"
+    //% group="Array Logic"
+    export function countTrue(values: boolean[]): number {
+        let count = 0
+        for (let v of values) {
+            if (v) count++
+        }
+        return count
+    }
+
+    /**
+     * COUNT FALSE
+     * Returns the number of false values in an array.
+     */
+    //% block="COUNT FALSE in $values"
+    //% group="Array Logic"
+    export function countFalse(values: boolean[]): number {
+        let count = 0
+        for (let v of values) {
+            if (!v) count++
+        }
+        return count
+    }
+
+    /**
+     * EXACTLY ONE TRUE
+     * True when exactly one value in the array is true.
+     */
+    //% block="EXACTLY ONE TRUE in $values"
+    //% group="Array Logic"
+    export function exactlyOne(values: boolean[]): boolean {
+        return exactly(values, 1)
+    }
+
+    /**
+     * INVERT ALL
+     * Returns a new array with every boolean inverted.
+     */
+    //% block="INVERT ALL $values"
+    //% group="Array Logic"
+    export function invertAll(values: boolean[]): boolean[] {
+        let out: boolean[] = []
+        for (let v of values) {
+            out.push(!v)
+        }
+        return out
+    }
+
+    /**
+     * ARRAY CHANGED
+     * True when any value differs from the previous call.
+     */
+    //% block="ARRAY CHANGED $values"
+    //% group="Array Logic"
+    export function arrayChanged(values: boolean[]): boolean {
+        if (prevArray.length !== values.length) {
+            prevArray = values.slice()
+            return true
+        }
+
+        for (let i = 0; i < values.length; i++) {
+            if (values[i] !== prevArray[i]) {
+                prevArray = values.slice()
+                return true
+            }
+        }
+
+        return false
+    }
+
 
 
 
@@ -701,6 +805,7 @@ namespace logic {
 
 
     //---Array Blocks---
+
     /**
     * ALL TRUE (array)
     * True if all values are true.
@@ -726,32 +831,7 @@ namespace logic {
         }
         return true
     }
-    /**
-     * COUNT TRUE
-     * Returns number of true values in array.
-     */
-    //% block="count true elements in array"
-    //% group="Array Logic"
-    export function countTrue(values: boolean[]): number {
-        let count = 0
-        for (let v of values) {
-            if (v) count++
-        }
-        return count
-    }
-    /**
-    * Returns number of false values in array.
-    * @param values the boolean array to be checked
-    */
-    //% block="count false elements in array"
-    //% group="Array Logic"
-    export function countFalse(values: boolean[]): number {
-        let count = 0
-        for (let v of values) {
-            if (!v) count++
-        }
-        return count
-    }
+    
     /**
      * True if at least %n values are true.
      * @param value the boolean array to be checked
@@ -782,27 +862,6 @@ namespace logic {
     }
 
     /**
-     * True if any value changed from last frame.
-     * @param values the boolean values of a boolean array
-     */
-    //% block="array changed $values"
-    //% group="Array Logic"
-    export function arrayChanged(values: boolean[]): boolean {
-        if (prevArray.length !== values.length) {
-            prevArray = values.slice()
-            return true
-        }
-
-        for (let i = 0; i < values.length; i++) {
-            if (values[i] !== prevArray[i]) {
-                prevArray = values.slice()
-                return true
-            }
-        }
-
-        return false
-    }
-    /**
     * True if at least one value is true.
     * @param values the boolean elements of a boolean array
     */
@@ -814,6 +873,7 @@ namespace logic {
         }
         return false
     }
+    
     /**
      * Returns false if any array inelement in a boolean array is true
      */
