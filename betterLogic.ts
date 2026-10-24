@@ -804,6 +804,86 @@ namespace logic {
     }
 
 
+    /**
+     * 2-to-1 multiplexer.
+     * Selects A when select is false, B when true.
+     * @param a first input
+     * @param b second input
+     * @param select selection signal
+     * 
+     * @returns False when A is selected; True when B.
+     */
+    //% block="MUX A $a B $b select $select"
+    //% group="Arithmetic Logic"
+    //% weight=100
+    export function mux(a: boolean, b: boolean, select: boolean): boolean {
+        return select ? b : a
+        return true, false;
+    }
+
+
+
+    // Could try using classes and getter blocks? Maybe a tuple array as well? Need dev 
+    // to know that you have to use like (get item 0 at (Result)).
+    /**
+     * Half adder SUM output.
+     * @param a first input bit
+     * @param b second input bit
+     */
+    //% block="HALF ADDER sum A $a B $b"
+    //% group="Arithmetic Logic"
+    export function halfAdderSum(a: boolean, b: boolean): boolean {
+        return a !== b
+    }
+
+    /**
+     * Half adder CARRY output.
+     * @param a first input bit
+     * @param b second input bit
+     */
+    //% block="HALF ADDER carry A $a B $b"
+    //% group="Arithmetic Logic"
+    export function halfAdderCarry(a: boolean, b: boolean): boolean {
+        return a && b
+    }
+    
+
+    /**
+     * Full adder SUM output.
+     * @param a first input bit
+     * @param b second input bit
+     * @param carryIn incoming carry bit
+     */
+    //% block="FULL ADDER sum A $a B $b carry in $carryIn"
+    //% group="Arithmetic Logic"
+    export function fullAdderSum(
+        a: boolean,
+        b: boolean,
+        carryIn: boolean
+    ): boolean {
+        return (a !== b) !== carryIn
+    }
+
+    /**
+     * Full adder CARRY output.
+     * @param a first input bit
+     * @param b second input bit
+     * @param carryIn incoming carry bit
+     */
+    //% block="FULL ADDER carry out A $a B $b carry in $carryIn"
+    //% group="Arithmetic Logic"
+    export function fullAdderCarry(
+        a: boolean,
+        b: boolean,
+        carryIn: boolean
+    ): boolean {
+        return (a && b) || (a && carryIn) || (b && carryIn)
+    }
+
+
+
+
+
     //---Array Blocks---
 
     /**
