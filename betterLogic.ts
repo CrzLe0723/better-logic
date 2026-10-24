@@ -465,6 +465,7 @@ namespace logic {
         prevStates[id] = a
         return result
     }
+
     /**
      * FALLING EDGE
      * True only when value changes from true to false.
@@ -478,6 +479,7 @@ namespace logic {
         lastStates[id] = a
         return result
     }
+
     /**
     * FLIP FLOP
     * Toggles state on rising edge.
@@ -494,12 +496,11 @@ namespace logic {
         lastStates[id] = a
         return toggleStates[id] || false
     }
+
     /**
      * TOGGLE ON RISING EDGE
      * Flips stored state when input turns true.
      */
-
-
     //% block="TOGGLE MEMORY id $id trigger $a"
     //% group="Game Logic"
     export function toggleMemory(id: number, a: boolean): boolean {
@@ -513,6 +514,7 @@ namespace logic {
         prevStates[id] = a
         return toggleStates[id] || false
     }
+
     /**
      * LATCH
      * Sets true when set is true, resets when reset is true.
@@ -565,6 +567,37 @@ namespace logic {
     export function getMemory(id: number): boolean {
         return memoryStates[id] || false
     }
+
+    /**
+     * Resets one stored memory value.
+     * @param id memory ID to reset
+     */
+    //% block="RESET MEMORY id $id"
+    //% group="Game Logic"
+    export function resetMemoryById(id: number): void {
+        memoryStates[id] = false
+    }
+
+    /**
+     * Resets state for one ID across stateful logic blocks.
+     * @param id State ID to reset
+     */
+    //% block="RESET STATE id $id"
+    //% group="Game Logic"
+    export function resetStateById(id: number): void {
+        lastStates[id] = false
+        toggleStates[id] = false
+        prevStates[id] = false
+        latchStates[id] = false
+        holdStates[id] = false
+        delayTimers[id] = 0
+        cooldowns[id] = 0
+        lockStates[id] = false
+        windowTimers[id] = 0
+        stableStates[id] = false
+        stableTimers[id] = 0
+    }
+
     /**
      * DELAY
      * Outputs true after N ms when triggered.
@@ -965,6 +998,34 @@ namespace logic {
         }
         return true
     }
+
+    /**
+     * True when an odd number of values are true.
+     * @param values Boolean values to check
+     */
+    //% block="ODD PARITY of $values"
+    //% group="Array Logic"
+    export function oddParity(values: boolean[]): boolean {
+        let parity = false
+
+        for (let value of values) {
+            parity = parity !== value
+        }
+
+        return parity
+    }
+
+    /**
+     * True when an even number of values are true.
+     * @param values Boolean values to check
+     */
+    //% block="EVEN PARITY of $values"
+    //% group="Array Logic"
+    export function evenParity(values: boolean[]): boolean {
+        return !oddParity(values)
+    }
+
+    //---Conversion Blocks---
 
     /**
      * Converts a value to a boolean.
