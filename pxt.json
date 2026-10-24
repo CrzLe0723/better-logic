@@ -11,6 +11,7 @@
         "LICENSE",
         "assets.json",
         "betterLogic.ts",
+        "helloWorld.cpp",
         "docs/and.md",
         "docs/or.md",
         "docs/not.md"
