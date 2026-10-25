@@ -83,6 +83,7 @@ namespace logic {
      */
     //% block="NAND $a $b"
     //% group="Derived Logic"
+    //% help=github:Better-Logic/docs/nand
     export function nand(a: boolean, b: boolean): boolean {
         return !(a && b)
     }
@@ -93,6 +94,7 @@ namespace logic {
      */
     //% block="NOR $a $b"
     //% group="Derived Logic"
+    //% help=github:Better-Logic/docs/nor
     export function nor(a: boolean, b: boolean): boolean {
         return !(a || b)
     }
@@ -103,6 +105,7 @@ namespace logic {
      */
     //% block="XNOR $a $b"
     //% group="Derived Logic"
+    //% help=github:Better-Logic/docs/xnor
     export function xnor(a: boolean, b: boolean): boolean {
         return a === b
     }
