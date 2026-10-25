@@ -68,6 +68,7 @@ namespace logic {
     //% block="NOT $a"
     //% group="Core Logic"
     //% weight=90
+    //% help=github:Better-Logic/docs/not
     export function not(a: boolean): boolean {
         return !a
     }
