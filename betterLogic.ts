@@ -27,6 +27,7 @@ namespace logic {
     //% block="XOR $a $b"
     //% group="Core Logic"
     //% weight=85
+    //% help=github:Better-Logic/docs/xor
     export function xor(a: boolean, b: boolean): boolean {
         return a != b
     }
